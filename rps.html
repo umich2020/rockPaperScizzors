@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    /*rock = 0
+    paper = 1
+    scizzors = -1*/
+    //if 1-0 = positivitve than paper wins. computer is paper then positive=computer win
+    //if 0 - -1= thaen rock wins
+    //if -1 - 1= negative. compuer is sciazzor then negative computer win. if computer is rock then it would be  0 -1 negative
+    // Your JavaScript goes here!
+    function computerChoice () {
+      return c_choice = Math.floor(Math.random() * 3) -1
+
+    }
+    function humanChoice () {
+      return  prompt("Input a number: choose rock(0), paper(1), scissors(-1)", 1)
+       
+    }
+    function playRound (c_choice=0, h_choice=0) {
+      if (c_choice === h_choice) {
+        console.log("Draw!")
+        return "Draw"
+      }
+      if (c_choice === -1) {
+        if (c_choice - h_choice <0) {
+          console.log("Computer wins")
+          return "C_wins"
+        } else {
+          console.log("Human wins")
+          return "h_wins"
+        }
+      } else {
+        if (c_choice - h_choice >0) {
+          console.log("Computer wins")
+          return "C_wins"
+        } else {
+          console.log("Human wins")
+          return "h_wins"
+        }
+      }
+    }
+    let hu_choice = humanChoice()
+    let co_choice = computerChoice()
+    let winner = playRound(co_choice,hu_choice)
+    console.log("computer choice is " +co_choice)
+    console.log("human choice is: " + hu_choice)
+    console.log("the winner is: " + winner)
+    /*
+    create function to get computer answer
+    random function 1-3
+    if 1 = rock, 2=paper, 3= scissor
+    done
+
+    get human answer
+    prompt for rock paper scissor
+      case insensitive //work on later//
+    
+    delare human and computer score (global scope)
+      increase score 
+    
+    function play game
+    play round 5 times. updating score
+    delare a winner by comparing score
+    */
+  
+  </script>
+
+</body>
+</html>
