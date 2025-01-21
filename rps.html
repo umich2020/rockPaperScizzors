@@ -52,7 +52,7 @@
         return "Draw"
       }
       if (c_choice === -1) {
-        if (c_choice - h_choice <0) {
+        if (c_choice - h_choice >0) {
           console.log("Computer wins")
           return "C_wins"
         } else {
@@ -60,7 +60,7 @@
           return "h_wins"
         }
       } else {
-        if (c_choice - h_choice >0) {
+        if (c_choice - h_choice===1) {
           console.log("Computer wins")
           return "C_wins"
         } else {
