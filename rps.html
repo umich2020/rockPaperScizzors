@@ -20,8 +20,31 @@
 
     }
     function humanChoice () {
-      return  prompt("Input a number: choose rock(0), paper(1), scissors(-1)", 1)
-       
+      answer = prompt("Input a number: choose rock(0), paper(1), scizzor(-1)", "scizzor")
+        switch (answer.toLowerCase()) {
+            case "rock" :
+                return 0
+                break;
+            case "paper" :
+                return 1
+                break;
+            case "scizzor" :
+                return -1
+                break
+        }
+    }
+    function translate (x) {
+        switch (x) {
+        case 1:
+            return "paper"
+            break;
+        case 0:
+            return "rock"
+            break;
+        case -1:
+            return "scizzor"
+            break;
+        }
     }
     function playRound (c_choice=0, h_choice=0) {
       if (c_choice === h_choice) {
@@ -49,8 +72,8 @@
     let hu_choice = humanChoice()
     let co_choice = computerChoice()
     let winner = playRound(co_choice,hu_choice)
-    console.log("computer choice is " +co_choice)
-    console.log("human choice is: " + hu_choice)
+    console.log("computer choice is " +translate(co_choice))
+    console.log("human choice is: " + translate(hu_choice))
     console.log("the winner is: " + winner)
     /*
     create function to get computer answer
