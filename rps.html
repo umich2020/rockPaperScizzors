@@ -5,9 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
+<body><!--remember to place javascript after all loading or you defer it because html hasn't loaded in yet-->
+  <button id="rock">rock</button><br>
+  <button id="paper">paper</button><br>
+  <button id="scizzor">scizzor</button><br>
+  <div>The winner is </div>
+  <div class="winner">computer</div>
+  <br>
+  <h1>Computer Score</h1> <h2 class="computer score">3</h2>
+  <h1>Human Score</h1> <h2 class="human score">3</h2>
+  <!--yes this is a bad comment
+  but we're not adding css so it'll be three simple buttons with page breaks
 
+  -->
   <script>
+    const btn = document.querySelectorAll("button")
+    btn.forEach((btn) =>{
+      btn.addEventListener(`click`,humanChoice)
+    })
     /*rock = 0
     paper = 1
     scizzors = -1*/
@@ -19,8 +34,8 @@
       return c_choice = Math.floor(Math.random() * 3) -1
 
     }
-    function humanChoice () {
-      answer = prompt("Input a number: choose rock(0), paper(1), scizzor(-1)", "scizzor")
+    function humanChoice (answer) {
+      alert("something has clicked")
         switch (answer.toLowerCase()) {
             case "rock" :
                 return 0
@@ -46,54 +61,43 @@
             break;
         }
     }
+     /*rock = 0
+    paper = 1
+    scizzors = -1*/
     function playRound (c_choice=0, h_choice=0) {
       if (c_choice === h_choice) {
         console.log("Draw!")
         return "Draw"
       }
-      if (c_choice === -1) {
-        if (c_choice - h_choice >0) {
-          console.log("Computer wins")
-          return "C_wins"
-        } else {
-          console.log("Human wins")
-          return "h_wins"
-        }
-      } else {
-        if (c_choice - h_choice===1) {
-          console.log("Computer wins")
-          return "C_wins"
-        } else {
-          console.log("Human wins")
-          return "h_wins"
-        }
+      switch (c_choice) {
+        case 0: 
+          if (h_choice === 1) {
+            return "human"
+          }
+          else {
+            return "computer"
+          }
+          case 1: 
+          if (h_choice === -1) {
+            return "human"
+          }
+          else {
+            return "computer"
+          }
+          case -1: 
+          if (h_choice === 0) {
+            return "human"
+          }
+          else {
+            return "computer"
+          }
       }
+     
     }
-    let hu_choice = humanChoice()
-    let co_choice = computerChoice()
-    let winner = playRound(co_choice,hu_choice)
-    console.log("computer choice is " +translate(co_choice))
-    console.log("human choice is: " + translate(hu_choice))
-    console.log("the winner is: " + winner)
-    /*
-    create function to get computer answer
-    random function 1-3
-    if 1 = rock, 2=paper, 3= scissor
-    done
 
-    get human answer
-    prompt for rock paper scissor
-      case insensitive //work on later//
-    
-    delare human and computer score (global scope)
-      increase score 
-    
-    function play game
-    play round 5 times. updating score
-    delare a winner by comparing score
-    */
+
   
   </script>
-
+  
 </body>
 </html>
