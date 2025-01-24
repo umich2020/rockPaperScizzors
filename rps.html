@@ -12,8 +12,8 @@
   <div>The winner is </div>
   <div class="winner" id="winner"></div>
   <br>
-  <h1>Computer Score</h1> <h2 class="computer score">3</h2>
-  <h1>Human Score</h1> <h2 class="human score">3</h2>
+  <h1>Computer Score</h1> <h2 class="computer score">Nan</h2>
+  <h1>Human Score</h1> <h2 class="human score">Nan</h2>
   <!--yes this is a bad comment
   but we're not adding css so it'll be three simple buttons with page breaks
 
@@ -25,11 +25,19 @@
     const btn = document.querySelectorAll("button")
     btn.forEach((btn) =>{
       btn.addEventListener(`click`, () => {
-        let c_choice = computerChoice()
-        let h_choice = humanChoice(btn.id)
-        winner = playRound(c_choice,h_choice)
-        if (c_score = 5)
-        document.getElementById("winner").textContent = winner
+        if (c_score < 5 && h_score <5) {
+          let c_choice = computerChoice()
+          let h_choice = humanChoice(btn.id)
+          playRound(c_choice,h_choice)
+          document.getElementsByClassName("computer")[0].innerHTML = c_score
+          document.getElementsByClassName("human")[0].innerHTML = h_score
+          console.log("computer score" + c_score)
+          console.log("human score"+h_score)
+          if (c_score >= 5 || h_score >=5) {
+            win = win()
+            console.log("winner is this is running")
+            document.getElementById("winner").textContent = win
+        }}
       })
     })
     /*rock = 0
@@ -69,7 +77,7 @@
             break;
         }
     }
-    function winner () {
+    function win () {
       if (c_score === 5) {
         return "computer"
       } else if (h_score ===5) {
