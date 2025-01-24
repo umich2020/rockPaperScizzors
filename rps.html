@@ -10,7 +10,7 @@
   <button id="paper">paper</button><br>
   <button id="scizzor">scizzor</button><br>
   <div>The winner is </div>
-  <div class="winner">computer</div>
+  <div class="winner" id="winner"></div>
   <br>
   <h1>Computer Score</h1> <h2 class="computer score">3</h2>
   <h1>Human Score</h1> <h2 class="human score">3</h2>
@@ -19,9 +19,18 @@
 
   -->
   <script>
+    let c_score =0
+    let h_score=0
+    let winner = null
     const btn = document.querySelectorAll("button")
     btn.forEach((btn) =>{
-      btn.addEventListener(`click`,humanChoice)
+      btn.addEventListener(`click`, () => {
+        let c_choice = computerChoice()
+        let h_choice = humanChoice(btn.id)
+        winner = playRound(c_choice,h_choice)
+        if (c_score = 5)
+        document.getElementById("winner").textContent = winner
+      })
     })
     /*rock = 0
     paper = 1
@@ -35,7 +44,6 @@
 
     }
     function humanChoice (answer) {
-      alert("something has clicked")
         switch (answer.toLowerCase()) {
             case "rock" :
                 return 0
@@ -61,6 +69,15 @@
             break;
         }
     }
+    function winner () {
+      if (c_score === 5) {
+        return "computer"
+      } else if (h_score ===5) {
+        return "human"
+      }
+      
+
+    }
      /*rock = 0
     paper = 1
     scizzors = -1*/
@@ -72,23 +89,29 @@
       switch (c_choice) {
         case 0: 
           if (h_choice === 1) {
+            h_score++
             return "human"
           }
           else {
+            c_score++
             return "computer"
           }
           case 1: 
           if (h_choice === -1) {
+            h_score++
             return "human"
           }
           else {
+            c_score++
             return "computer"
           }
           case -1: 
           if (h_choice === 0) {
+            h_score++
             return "human"
           }
           else {
+            c_score++
             return "computer"
           }
       }
